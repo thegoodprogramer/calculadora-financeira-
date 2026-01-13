@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Arbitragem Express</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        .result { margin-top: 20px; padding: 15px; background: #e7f3ef; border-radius: 4px; display: none; }
+        .profit { color: #2ecc71; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Calculadora de Lucro Garantido</h2>
+        <p>Insira as Odds de duas casas diferentes:</p>
+        <input type="number" id="odd1" placeholder="Odd Casa A (Ex: 2.10)" step="0.01">
+        <input type="number" id="odd2" placeholder="Odd Casa B (Ex: 1.95)" step="0.01">
+        <input type="number" id="invest" placeholder="Investimento Total (R$)" step="10">
+        <button onclick="calculate()" style="width:100%; padding:10px; background:#2ecc71; color:white; border:none; border-radius:4px; cursor:pointer;">Calcular Arbitragem</button>
+        
+        <div id="result" class="result">
+            <p id="msg"></p>
+            <p id="stake1"></p>
+            <p id="stake2"></p>
+            <p class="profit" id="totalProfit"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const o1 = parseFloat(document.getElementById('odd1').value);
+            const o2 = parseFloat(document.getElementById('odd2').value);
+            const invest = parseFloat(document.getElementById('invest').value);
+            const arb = (1/o1) + (1/o2);
+            const resDiv = document.getElementById('result');
+            resDiv.style.display = 'block';
+
+            if (arb < 1) {
+                const s1 = (invest / (o1 * arb)).toFixed(2);
+                const s2 = (invest / (o2 * arb)).toFixed(2);
+                const profit = (invest / arb - invest).toFixed(2);
+                document.getElementById('msg').innerText = "✅ Arbitragem Detectada!";
+                document.getElementById('stake1').innerText = "Apostar na Casa A: R$ " + s1;
+                document.getElementById('stake2').innerText = "Apostar na Casa B: R$ " + s2;
+                document.getElementById('totalProfit').innerText = "Lucro Garantido: R$ " + profit;
+            } else {
+                document.getElementById('msg').innerText = "❌ Sem margem de lucro nesta combinação.";
+                document.getElementById('stake1').innerText = ""; document.getElementById('stake2').innerText = "";
+                document.getElementById('totalProfit').innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
