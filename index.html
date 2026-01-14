@@ -3,37 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Arbitragem Express</title>
+    <title>Calculadora de Arbitragem Express - Surebets & Finance</title>
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-        .result { margin-top: 20px; padding: 15px; background: #e7f3ef; border-radius: 4px; display: none; }
-        .profit { color: #2ecc71; font-weight: bold; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; margin-bottom: 20px; }
+        h2 { color: #2c3e50; margin-top: 0; font-size: 1.5rem; }
+        label { font-size: 0.9rem; color: #666; }
+        input { width: 100%; padding: 12px; margin: 8px 0 18px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #219150; }
+        .result { margin-top: 20px; padding: 15px; background: #ebf9f1; border-left: 5px solid #27ae60; border-radius: 4px; display: none; }
+        .profit { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+        .seo-section { max-width: 600px; background: white; padding: 20px; border-radius: 12px; margin-top: 20px; font-size: 0.95rem; line-height: 1.6; color: #444; }
+        .ad-placeholder { width: 100%; text-align: center; margin: 15px 0; min-height: 90px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; }
     </style>
 </head>
 <body>
+
+    <div class="ad-placeholder">Espaço reservado para o Banner de Anúncio Superior</div>
+
     <div class="card">
         <h2>Calculadora de Lucro Garantido</h2>
-        <p>Insira as Odds de duas casas diferentes:</p>
-        <input type="number" id="odd1" placeholder="Odd Casa A (Ex: 2.10)" step="0.01">
-        <input type="number" id="odd2" placeholder="Odd Casa B (Ex: 1.95)" step="0.01">
-        <input type="number" id="invest" placeholder="Investimento Total (R$)" step="10">
-        <button onclick="calculate()" style="width:100%; padding:10px; background:#2ecc71; color:white; border:none; border-radius:4px; cursor:pointer;">Calcular Arbitragem</button>
+        <p style="font-size: 0.85rem; color: #777;">Simulador de Arbitragem Financeira (Surebets)</p>
+        
+        <label>Odd da Casa A (Ex: 2.10)</label>
+        <input type="number" id="odd1" placeholder="2.10" step="0.01">
+        
+        <label>Odd da Casa B (Ex: 1.95)</label>
+        <input type="number" id="odd2" placeholder="1.95" step="0.01">
+        
+        <label>Investimento Total (R$)</label>
+        <input type="number" id="invest" placeholder="1000" step="10">
+        
+        <button onclick="calculate()">Calcular Arbitragem</button>
         
         <div id="result" class="result">
-            <p id="msg"></p>
+            <p id="msg" style="font-weight: bold;"></p>
             <p id="stake1"></p>
             <p id="stake2"></p>
             <p class="profit" id="totalProfit"></p>
         </div>
     </div>
 
+    <section class="seo-section">
+        <h2>Guia Técnico: Como Lucrar com Arbitragem e Ligas Menores</h2>
+        <p>A <strong>arbitragem financeira</strong>, popularmente chamada de <em>surebet</em>, é uma técnica matemática que utiliza a discrepância de preços entre mercados para garantir lucro. Esta calculadora processa o ROI (Retorno sobre Investimento) instantaneamente.</p>
+        
+        <h3>Estratégias para Vôlei Turco e eSports</h3>
+        <p>A maior variável de lucro hoje está em ligas de baixa liquidez, como a <strong>segunda divisão de vôlei na Turquia</strong> ou torneios regionais de <strong>CS2 e League of Legends</strong>. Nesses mercados, os algoritmos das casas de apostas apresentam lentidão no ajuste de odds decimais, permitindo janelas de ganho real.</p>
+        
+        <ul>
+            <li><strong>Fórmula de Cobertura:</strong> Inversa da Odd A + Inversa da Odd B.</li>
+            <li><strong>Gestão de Banca:</strong> Foque em operações com margem superior a 1.5% para escalar juros compostos.</li>
+        </ul>
+    </section>
+
+    <div class="ad-placeholder">Espaço reservado para o Banner de Anúncio Inferior</div>
+
     <script>
         function calculate() {
             const o1 = parseFloat(document.getElementById('odd1').value);
             const o2 = parseFloat(document.getElementById('odd2').value);
             const invest = parseFloat(document.getElementById('invest').value);
+            
+            if (!o1 || !o2 || !invest) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
             const arb = (1/o1) + (1/o2);
             const resDiv = document.getElementById('result');
             resDiv.style.display = 'block';
@@ -42,31 +79,19 @@
                 const s1 = (invest / (o1 * arb)).toFixed(2);
                 const s2 = (invest / (o2 * arb)).toFixed(2);
                 const profit = (invest / arb - invest).toFixed(2);
-                document.getElementById('msg').innerText = "✅ Arbitragem Detectada!";
+                const roi = (((invest / arb - invest) / invest) * 100).toFixed(2);
+
+                document.getElementById('msg').innerText = "✅ Oportunidade de Lucro!";
                 document.getElementById('stake1').innerText = "Apostar na Casa A: R$ " + s1;
                 document.getElementById('stake2').innerText = "Apostar na Casa B: R$ " + s2;
-                document.getElementById('totalProfit').innerText = "Lucro Garantido: R$ " + profit;
+                document.getElementById('totalProfit').innerText = "Lucro Garantido: R$ " + profit + " (" + roi + "%)";
             } else {
-                document.getElementById('msg').innerText = "❌ Sem margem de lucro nesta combinação.";
-                document.getElementById('stake1').innerText = ""; document.getElementById('stake2').innerText = "";
+                document.getElementById('msg').innerText = "❌ Sem margem nesta combinação.";
+                document.getElementById('stake1').innerText = "Cálculo: " + (arb * 100).toFixed(2) + "% de probabilidade total.";
+                document.getElementById('stake2').innerText = "Para lucro, o valor deve ser menor que 100%.";
                 document.getElementById('totalProfit').innerText = "";
             }
         }
     </script>
-    <hr>
-<section style="padding: 20px; font-size: 14px; color: #555; line-height: 1.6;">
-    <h2>Guia Técnico de Arbitragem Financeira e Surebets</h2>
-    <p>Esta <strong>calculadora de arbitragem</strong> foi desenvolvida para identificar gaps de mercado em modelos de odds decimais. A arbitragem financeira, também conhecida como <em>surebet</em>, ocorre quando a variação de probabilidades entre diferentes mercados permite um lucro garantido através do cálculo de proporção inversa (1/Odd A + 1/Odd B < 1).</p>
-    
-    <h3>Como calcular lucro em Arbitragem de eSports e Ligas Menores</h3>
-    <p>O segredo para a escalabilidade sem investimento é focar em mercados de baixa liquidez, como a <strong>segunda divisão de vôlei turco</strong> ou <strong>torneios regionais de CS2</strong>. Nestes nichos, as casas de apostas demoram a ajustar as odds, criando janelas de oportunidade para traders esportivos que utilizam ferramentas de cálculo rápido.</p>
-
-    <h3>Fórmulas Matemáticas de Cobertura</h3>
-    <ul>
-        <li><strong>Fórmula de Arbitragem:</strong> Inversa da Odd A + Inversa da Odd B.</li>
-        <li><strong>Cálculo de Stake:</strong> (Investimento Total / (Odd Individual * Arbitragem Total)).</li>
-    </ul>
-    <p>Utilize este simulador para garantir que sua margem de ROI seja superior a 2% por operação, o que no longo prazo gera um efeito de juros compostos exponencial.</p>
-</section>
 </body>
 </html>
