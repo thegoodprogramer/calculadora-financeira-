@@ -6,7 +6,7 @@
     <title>Global Surebet Calculator - Moneyline & Decimal</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; margin-bottom: 20px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; margin-bottom: 20px; z-index: 1; }
         h2 { color: #2c3e50; margin-bottom: 15px; font-size: 1.6rem; text-align: center; }
         .converter-box { background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 20px; border: 1px dashed #cbd5e0; }
         label { font-size: 0.85rem; font-weight: bold; color: #4a5568; display: block; margin-bottom: 5px; }
@@ -16,10 +16,16 @@
         button:hover { background: #2b6cb0; }
         .result { margin-top: 20px; padding: 15px; background: #ebf8ff; border-left: 5px solid #3182ce; border-radius: 4px; display: none; }
         .profit { color: #38a169; font-weight: bold; font-size: 1.3rem; }
-        .seo-section { max-width: 600px; font-size: 0.9rem; line-height: 1.6; color: #718096; }
+        .seo-section { max-width: 600px; font-size: 0.9rem; line-height: 1.6; color: #718096; margin-top: 20px; }
+        .ad-container { margin: 20px 0; min-height: 250px; width: 100%; display: flex; justify-content: center; }
     </style>
 </head>
 <body>
+
+    <div class="ad-container">
+        <script async="async" data-cfasync="false" src="https://pl28479421.effectivegatecpm.com/262bcdccc001c928a9bcb4552e0018ea/invoke.js"></script>
+        <div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
+    </div>
 
     <div class="card">
         <h2>Surebet Calculator</h2>
@@ -30,16 +36,16 @@
                 <input type="number" id="us_input" placeholder="e.g. -110 or +250">
                 <div id="dec_output" style="padding: 12px; font-weight: bold; color: #2d3748;">Result: --</div>
             </div>
-            <button onclick="convertOdds()" style="padding: 8px; font-size: 0.8rem; background: #718096;">Convert to Decimal</button>
+            <button onclick="convertOdds()" style="padding: 8px; font-size: 0.8rem; background: #718096; width: auto; margin: 0 auto; display: block;">Convert to Decimal</button>
         </div>
 
         <div class="grid">
             <div>
-                <label>Odd Bookie A (Decimal)</label>
+                <label>Odd Bookie A</label>
                 <input type="number" id="odd1" placeholder="2.10" step="0.01">
             </div>
             <div>
-                <label>Odd Bookie B (Decimal)</label>
+                <label>Odd Bookie B</label>
                 <input type="number" id="odd2" placeholder="1.95" step="0.01">
             </div>
         </div>
@@ -63,10 +69,15 @@
         <p>Commonly used for NBA, NFL, and MLB <strong>Moneyline spreads</strong>, where <strong>decimal odds discrepancy</strong> occurs between international and domestic markets.</p>
     </section>
 
+    <div class="ad-container">
+        <div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
+    </div>
+
     <script>
         // CONVERSION LOGIC
         function convertOdds() {
             const us = parseFloat(document.getElementById('us_input').value);
+            if (isNaN(us)) return;
             let dec = 0;
             if (us > 0) {
                 dec = (us / 100) + 1;
@@ -82,6 +93,11 @@
             const o2 = parseFloat(document.getElementById('odd2').value);
             const invest = parseFloat(document.getElementById('invest').value);
             
+            if (!o1 || !o2 || !invest) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
             const arb = (1/o1) + (1/o2);
             const resDiv = document.getElementById('result');
             resDiv.style.display = 'block';
