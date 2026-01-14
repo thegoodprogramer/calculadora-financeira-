@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surebet Calculator - Arbitrage Betting & Finance Tool</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; margin-bottom: 20px; }
+        h2 { color: #2c3e50; margin-top: 0; font-size: 1.5rem; }
+        label { font-size: 0.9rem; color: #666; }
+        input { width: 100%; padding: 12px; margin: 8px 0 18px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 15px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 20px; padding: 15px; background: #e8f4fd; border-left: 5px solid #3498db; border-radius: 4px; display: none; }
+        .profit { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+        .seo-section { max-width: 600px; background: white; padding: 20px; border-radius: 12px; margin-top: 20px; font-size: 0.95rem; line-height: 1.6; color: #444; }
+        .ad-placeholder { width: 100%; text-align: center; margin: 15px 0; min-height: 90px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; }
+    </style>
+</head>
+<body>
+
+    <div class="ad-placeholder">English Ad Space - Place your Adsterra script here</div>
+
+    <div class="card">
+        <h2>Surebet Calculator</h2>
+        <p style="font-size: 0.85rem; color: #777;">Guaranteed Profit & Arbitrage Simulator</p>
+        
+        <label>Odd Bookmaker A (e.g., 2.10)</label>
+        <input type="number" id="odd1" placeholder="2.10" step="0.01">
+        
+        <label>Odd Bookmaker B (e.g., 1.95)</label>
+        <input type="number" id="odd2" placeholder="1.95" step="0.01">
+        
+        <label>Total Investment ($)</label>
+        <input type="number" id="invest" placeholder="1000" step="10">
+        
+        <button onclick="calculate()">Calculate Arbitrage</button>
+        
+        <div id="result" class="result">
+            <p id="msg" style="font-weight: bold;"></p>
+            <p id="stake1"></p>
+            <p id="stake2"></p>
+            <p class="profit" id="totalProfit"></p>
+        </div>
+    </div>
+
+    <section class="seo-section">
+        <h2>Technical Guide: Mastering Arbitrage in Global Markets</h2>
+        <p><strong>Arbitrage betting</strong>, or <em>surebets</em>, is a mathematical strategy that exploits price discrepancies between bookmakers to guarantee a return. Our calculator processes the ROI (Return on Investment) instantly for decimal odds.</p>
+        
+        <h3>Strategies for NBA, Premier League, and eSports</h3>
+        <p>The highest profit variables today are found in low-liquidity markets, such as <strong>European Challenger eSports leagues</strong> or <strong>Asian Handicap variations</strong> in secondary football leagues. In these niches, bookmaker algorithms often lag in adjusting decimal odds, creating windows for real gains.</p>
+        
+        <ul>
+            <li><strong>Hedge Formula:</strong> 1/Odd A + 1/Odd B.</li>
+            <li><strong>Bankroll Management:</strong> Target operations with margins over 2% to leverage exponential compound interest.</li>
+        </ul>
+
+        <h3>Crypto Arbitrage and Skin Trading</h3>
+        <p>This engine also supports <strong>Crypto Exchange Arbitrage</strong> and <strong>In-game Asset Trading (Skins)</strong>. By calculating the spread between platforms and subtracting withdrawal fees, you can identify high-probability trades in the digital asset space.</p>
+    </section>
+
+    <div class="ad-placeholder">English Ad Space - Place your Adsterra script here</div>
+
+    <script>
+        function calculate() {
+            const o1 = parseFloat(document.getElementById('odd1').value);
+            const o2 = parseFloat(document.getElementById('odd2').value);
+            const invest = parseFloat(document.getElementById('invest').value);
+            
+            if (!o1 || !o2 || !invest) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const arb = (1/o1) + (1/o2);
+            const resDiv = document.getElementById('result');
+            resDiv.style.display = 'block';
+
+            if (arb < 1) {
+                const s1 = (invest / (o1 * arb)).toFixed(2);
+                const s2 = (invest / (o2 * arb)).toFixed(2);
+                const profit = (invest / arb - invest).toFixed(2);
+                const roi = (((invest / arb - invest) / invest) * 100).toFixed(2);
+
+                document.getElementById('msg').innerText = "✅ Profit Opportunity Detected!";
+                document.getElementById('stake1').innerText = "Bet on Bookmaker A: $ " + s1;
+                document.getElementById('stake2').innerText = "Bet on Bookmaker B: $ " + s2;
+                document.getElementById('totalProfit').innerText = "Guaranteed Profit: $ " + profit + " (" + roi + "%)";
+            } else {
+                document.getElementById('msg').innerText = "❌ No arbitrage margin found.";
+                document.getElementById('stake1').innerText = "Calculation: " + (arb * 100).toFixed(2) + "% total probability.";
+                document.getElementById('totalProfit').innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
