@@ -3,38 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surebet Calculator - Arbitrage Betting & Finance Tool</title>
+    <title>Global Surebet Calculator - Moneyline & Decimal</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; margin-bottom: 20px; }
-        h2 { color: #2c3e50; margin-top: 0; font-size: 1.5rem; }
-        label { font-size: 0.9rem; color: #666; }
-        input { width: 100%; padding: 12px; margin: 8px 0 18px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
-        button { width: 100%; padding: 15px; background: #3498db; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: background 0.3s; }
-        button:hover { background: #2980b9; }
-        .result { margin-top: 20px; padding: 15px; background: #e8f4fd; border-left: 5px solid #3498db; border-radius: 4px; display: none; }
-        .profit { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
-        .seo-section { max-width: 600px; background: white; padding: 20px; border-radius: 12px; margin-top: 20px; font-size: 0.95rem; line-height: 1.6; color: #444; }
-        .ad-placeholder { width: 100%; text-align: center; margin: 15px 0; min-height: 90px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; margin-bottom: 20px; }
+        h2 { color: #2c3e50; margin-bottom: 15px; font-size: 1.6rem; text-align: center; }
+        .converter-box { background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 20px; border: 1px dashed #cbd5e0; }
+        label { font-size: 0.85rem; font-weight: bold; color: #4a5568; display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        button { width: 100%; padding: 15px; background: #3182ce; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #2b6cb0; }
+        .result { margin-top: 20px; padding: 15px; background: #ebf8ff; border-left: 5px solid #3182ce; border-radius: 4px; display: none; }
+        .profit { color: #38a169; font-weight: bold; font-size: 1.3rem; }
+        .seo-section { max-width: 600px; font-size: 0.9rem; line-height: 1.6; color: #718096; }
     </style>
 </head>
 <body>
 
-    <script async="async" data-cfasync="false" src="https://pl28479421.effectivegatecpm.com/262bcdccc001c928a9bcb4552e0018ea/invoke.js"></script>
-<div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
-
     <div class="card">
         <h2>Surebet Calculator</h2>
-        <p style="font-size: 0.85rem; color: #777;">Guaranteed Profit & Arbitrage Simulator</p>
-        
-        <label>Odd Bookmaker A (e.g., 2.10)</label>
-        <input type="number" id="odd1" placeholder="2.10" step="0.01">
-        
-        <label>Odd Bookmaker B (e.g., 1.95)</label>
-        <input type="number" id="odd2" placeholder="1.95" step="0.01">
+
+        <div class="converter-box">
+            <label style="text-align: center; color: #2b6cb0;">Quick Converter: American to Decimal</label>
+            <div class="grid">
+                <input type="number" id="us_input" placeholder="e.g. -110 or +250">
+                <div id="dec_output" style="padding: 12px; font-weight: bold; color: #2d3748;">Result: --</div>
+            </div>
+            <button onclick="convertOdds()" style="padding: 8px; font-size: 0.8rem; background: #718096;">Convert to Decimal</button>
+        </div>
+
+        <div class="grid">
+            <div>
+                <label>Odd Bookie A (Decimal)</label>
+                <input type="number" id="odd1" placeholder="2.10" step="0.01">
+            </div>
+            <div>
+                <label>Odd Bookie B (Decimal)</label>
+                <input type="number" id="odd2" placeholder="1.95" step="0.01">
+            </div>
+        </div>
         
         <label>Total Investment ($)</label>
-        <input type="number" id="invest" placeholder="1000" step="10">
+        <input type="number" id="invest" placeholder="1000">
         
         <button onclick="calculate()">Calculate Arbitrage</button>
         
@@ -47,35 +58,30 @@
     </div>
 
     <section class="seo-section">
-        <h2>Technical Guide: Mastering Arbitrage in Global Markets</h2>
-        <p><strong>Arbitrage betting</strong>, or <em>surebets</em>, is a mathematical strategy that exploits price discrepancies between bookmakers to guarantee a return. Our calculator processes the ROI (Return on Investment) instantly for decimal odds.</p>
-        
-        <h3>Strategies for NBA, Premier League, and eSports</h3>
-        <p>The highest profit variables today are found in low-liquidity markets, such as <strong>European Challenger eSports leagues</strong> or <strong>Asian Handicap variations</strong> in secondary football leagues. In these niches, bookmaker algorithms often lag in adjusting decimal odds, creating windows for real gains.</p>
-        
-        <ul>
-            <li><strong>Hedge Formula:</strong> 1/Odd A + 1/Odd B.</li>
-            <li><strong>Bankroll Management:</strong> Target operations with margins over 2% to leverage exponential compound interest.</li>
-        </ul>
-
-        <h3>Crypto Arbitrage and Skin Trading</h3>
-        <p>This engine also supports <strong>Crypto Exchange Arbitrage</strong> and <strong>In-game Asset Trading (Skins)</strong>. By calculating the spread between platforms and subtracting withdrawal fees, you can identify high-probability trades in the digital asset space.</p>
+        <h3>Institutional Arbitrage & Market Efficiency</h3>
+        <p>This professional tool is designed to identify <strong>market inefficiencies</strong> in global sports betting. By calculating <strong>implied probability</strong> across different decimal and American odds, users can secure a guaranteed <strong>yield</strong> through mathematical hedging.</p>
+        <p>Commonly used for NBA, NFL, and MLB <strong>Moneyline spreads</strong>, where <strong>decimal odds discrepancy</strong> occurs between international and domestic markets.</p>
     </section>
 
-    <script async="async" data-cfasync="false" src="https://pl28479421.effectivegatecpm.com/262bcdccc001c928a9bcb4552e0018ea/invoke.js"></script>
-<div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
-
     <script>
+        // CONVERSION LOGIC
+        function convertOdds() {
+            const us = parseFloat(document.getElementById('us_input').value);
+            let dec = 0;
+            if (us > 0) {
+                dec = (us / 100) + 1;
+            } else {
+                dec = (100 / Math.abs(us)) + 1;
+            }
+            document.getElementById('dec_output').innerText = "Result: " + dec.toFixed(2);
+        }
+
+        // ARBITRAGE LOGIC
         function calculate() {
             const o1 = parseFloat(document.getElementById('odd1').value);
             const o2 = parseFloat(document.getElementById('odd2').value);
             const invest = parseFloat(document.getElementById('invest').value);
             
-            if (!o1 || !o2 || !invest) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
             const arb = (1/o1) + (1/o2);
             const resDiv = document.getElementById('result');
             resDiv.style.display = 'block';
@@ -86,13 +92,12 @@
                 const profit = (invest / arb - invest).toFixed(2);
                 const roi = (((invest / arb - invest) / invest) * 100).toFixed(2);
 
-                document.getElementById('msg').innerText = "✅ Profit Opportunity Detected!";
-                document.getElementById('stake1').innerText = "Bet on Bookmaker A: $ " + s1;
-                document.getElementById('stake2').innerText = "Bet on Bookmaker B: $ " + s2;
-                document.getElementById('totalProfit').innerText = "Guaranteed Profit: $ " + profit + " (" + roi + "%)";
+                document.getElementById('msg').innerText = "✅ Arbitrage Opportunity!";
+                document.getElementById('stake1').innerText = "Bet A: $ " + s1;
+                document.getElementById('stake2').innerText = "Bet B: $ " + s2;
+                document.getElementById('totalProfit').innerText = "Profit: $ " + profit + " (" + roi + "%)";
             } else {
-                document.getElementById('msg').innerText = "❌ No arbitrage margin found.";
-                document.getElementById('stake1').innerText = "Calculation: " + (arb * 100).toFixed(2) + "% total probability.";
+                document.getElementById('msg').innerText = "❌ No Margin (Prob: " + (arb * 100).toFixed(2) + "%)";
                 document.getElementById('totalProfit').innerText = "";
             }
         }
