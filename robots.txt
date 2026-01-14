@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thegoodprogramer.github.io/calculadora-financeira-/sitemap.xml
