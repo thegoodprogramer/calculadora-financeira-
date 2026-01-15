@@ -2,168 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    google-site-verification: google62a718802da7951e.html
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Surebet Calculator - Moneyline & Decimal</title>
-    <meta name="google-site-verification" content="8MjSneVj6KHwx6XqbZYMRevHr6lEI9CLykqgH9fV_Q4" />
+    <title>BettingTools Pro - Smart Calculators for Professional Bettors</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; color: #333; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 480px; margin-bottom: 20px; z-index: 1; }
-        h2 { color: #2c3e50; margin-bottom: 15px; font-size: 1.6rem; text-align: center; }
-        .converter-box { background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 20px; border: 1px dashed #cbd5e0; }
-        label { font-size: 0.85rem; font-weight: bold; color: #4a5568; display: block; margin-bottom: 5px; }
-        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        button { width: 100%; padding: 15px; background: #3182ce; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #2b6cb0; }
-        .result { margin-top: 20px; padding: 15px; background: #ebf8ff; border-left: 5px solid #3182ce; border-radius: 4px; display: none; }
-        .profit { color: #38a169; font-weight: bold; font-size: 1.3rem; }
-        .seo-section { max-width: 600px; font-size: 0.9rem; line-height: 1.6; color: #718096; margin-top: 20px; }
-        .ad-container { margin: 20px 0; min-height: 250px; width: 100%; display: flex; justify-content: center; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #10b981; /* Verde para remeter a lucro/dólar */
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        header { width: 100%; padding: 40px 20px; text-align: center; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); border-bottom: 1px solid #334155; }
+        h1 { margin: 0; font-size: 2.5rem; color: var(--accent); }
+        p.subtitle { color: var(--text-dim); margin-top: 10px; font-size: 1.1rem; }
+        
+        .container { max-width: 1000px; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; box-sizing: border-box; }
+        
+        .tool-card { background: var(--card); border: 1px solid #334155; border-radius: 16px; padding: 30px; transition: transform 0.3s, border-color 0.3s; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .tool-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .tool-card h2 { margin: 0 0 10px 0; color: var(--text); font-size: 1.5rem; }
+        .tool-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px; }
+        .btn { display: inline-block; padding: 12px 20px; background: var(--accent); color: #064e3b; border-radius: 8px; font-weight: bold; text-align: center; transition: 0.3s; }
+        .tool-card:hover .btn { background: #34d399; }
+
+        .ad-banner { margin: 20px 0; width: 100%; max-width: 728px; min-height: 90px; background: #1e293b; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
+        
+        footer { margin-top: 50px; padding: 20px; color: var(--text-dim); font-size: 0.8rem; text-align: center; }
+        .lang-switch { position: absolute; top: 10px; right: 20px; font-size: 0.8rem; color: var(--text-dim); text-decoration: none; border: 1px solid #334155; padding: 5px 10px; border-radius: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="ad-container">
+    <header>
+        <a href="../" class="lang-switch">🇧🇷 Mudar para Português</a>
+        <h1>BettingTools Pro</h1>
+        <p class="subtitle">Free advanced tools for Arbitrage, Bankroll Management, and Risk Analysis.</p>
+    </header>
+
+    <div class="ad-banner">
         <script async="async" data-cfasync="false" src="https://pl28479421.effectivegatecpm.com/262bcdccc001c928a9bcb4552e0018ea/invoke.js"></script>
         <div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
     </div>
 
-    <div class="card">
-        <h2>Surebet Calculator</h2>
-
-        <div class="converter-box">
-            <label style="text-align: center; color: #2b6cb0;">Quick Converter: American to Decimal</label>
-            <div class="grid">
-                <input type="number" id="us_input" placeholder="e.g. -110 or +250">
-                <div id="dec_output" style="padding: 12px; font-weight: bold; color: #2d3748;">Result: --</div>
-            </div>
-            <button onclick="convertOdds()" style="padding: 8px; font-size: 0.8rem; background: #718096; width: auto; margin: 0 auto; display: block;">Convert to Decimal</button>
-        </div>
-
-        <div class="grid">
+    <div class="container">
+        <a href="./arbitrage/" class="tool-card">
             <div>
-                <label>Odd Bookie A</label>
-                <input type="number" id="odd1" placeholder="2.10" step="0.01">
+                <h2>Surebet Calculator</h2>
+                <p>Calculate exact stakes for guaranteed profits by covering all outcomes across different bookies.</p>
             </div>
+            <div class="btn">Open Calculator</div>
+        </a>
+
+        <a href="../kelly/" class="tool-card">
             <div>
-                <label>Odd Bookie B</label>
-                <input type="number" id="odd2" placeholder="1.95" step="0.01">
+                <h2>Kelly Criterion</h2>
+                <p>Optimize your bet sizes using the mathematical Kelly formula to maximize long-term growth.</p>
             </div>
-        </div>
-        
-        <label>Total Investment ($)</label>
-        <input type="number" id="invest" placeholder="1000">
-        
-        <button onclick="calculate()">Calculate Arbitrage</button>
-        
-        <div id="result" class="result">
-            <p id="msg" style="font-weight: bold;"></p>
-            <p id="stake1"></p>
-            <p id="stake2"></p>
-            <p class="profit" id="totalProfit"></p>
-        </div>
-    </div>
-    <div class="info-section" style="max-width: 500px; margin: 30px auto; background: #1e293b; padding: 20px; border-radius: 12px; font-size: 0.9rem; border: 1px solid #334155; color: #f8fafc; text-align: left; line-height: 1.6;">
-        <h3 style="color: #4299e1; margin-top: 0;">What is Arbitrage Betting?</h3>
-        <p>Arbitrage betting (also known as "Surebets") is a proven strategy where you place bets on all possible outcomes of a sporting event across different bookmakers. Since bookies often have varying opinions on odds, a mathematical gap can occur, allowing you to lock in a <span style="color: #48bb78; font-weight: bold;">guaranteed profit</span> regardless of who wins the match.</p>
-        
-        <h3 style="color: #4299e1;">How to use this tool:</h3>
-        <ol>
-            <li><strong>Find the Odds:</strong> Get the Decimal odds for Outcome A from one bookmaker and Outcome B from another.</li>
-            <li><strong>Input Data:</strong> Enter both odds into the fields above.</li>
-            <li><strong>Set Investment:</strong> Choose the total amount you want to bet (Total Investment).</li>
-            <li><strong>Execute:</strong> The calculator will tell you the exact "Stake" to place on each side to ensure profit.</li>
-        </ol>
+            <div class="btn">Manage Risk</div>
+        </a>
 
-        <p style="font-style: italic; color: #a0aec0; font-size: 0.8rem; margin-top: 15px;">Note: Always check if the odds haven't changed before placing your bets to ensure the arbitrage opportunity is still live.</p>
+        <a href="../compound/" class="tool-card">
+            <div>
+                <h2>Bankroll Simulator</h2>
+                <p>See the power of compound interest. Project your bankroll growth over 30, 60, or 90 days.</p>
+            </div>
+            <div class="btn">Simulate Growth</div>
+        </a>
     </div>
 
-    <section class="seo-section">
-        <h3>Institutional Arbitrage & Market Efficiency</h3>
-        <p>This professional tool is designed to identify <strong>market inefficiencies</strong> in global sports betting. By calculating <strong>implied probability</strong> across different decimal and American odds, users can secure a guaranteed <strong>yield</strong> through mathematical hedging.</p>
-        <p>Commonly used for NBA, NFL, and MLB <strong>Moneyline spreads</strong>, where <strong>decimal odds discrepancy</strong> occurs between international and domestic markets.</p>
-    <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 30px 0;">
-<h3>Essential Arbitrage Glossary</h3>
-<dl style="background: #f8fafc; padding: 15px; border-radius: 8px;">
-    <dt><strong>Arbitrage (Surebet):</strong></dt>
-    <dd style="margin-bottom: 10px;">The practice of taking advantage of a price difference between two or more markets to lock in a guaranteed profit regardless of the outcome.</dd>
+    <footer>
+        &copy; 2026 BettingTools Pro - Your edge in the market.
+    </footer>
 
-    <dt><strong>Moneyline Odds:</strong></dt>
-    <dd style="margin-bottom: 10px;">Commonly used in the US, these odds are based on a $100 stake. Positive numbers (+) indicate how much profit you make on a $100 bet, while negative numbers (-) show how much you must bet to win $100.</dd>
-
-    <dt><strong>Implied Probability:</strong></dt>
-    <dd style="margin-bottom: 10px;">The conversion of betting odds into a percentage. To find an arbitrage opportunity, the sum of implied probabilities must be less than 100%.</dd>
-
-    <dt><strong>Stake Distribution:</strong></dt>
-    <dd style="margin-bottom: 10px;">The mathematical calculation of how much money to place on each outcome to ensure the same profit margin on both sides.</dd>
-
-    <dt><strong>Market Spread:</strong></dt>
-    <dd style="margin-bottom: 10px;">The difference between the highest buy price and the lowest sell price. Narrower spreads in high-liquidity markets require faster calculation tools.</dd>
-
-    <dt><strong>Value Betting:</strong></dt>
-    <dd style="margin-bottom: 10px;">Placing a bet when the probability of an event occurring is higher than what the bookmaker's odds suggest.</dd>
-</dl>
-        <p style="text-align: center; margin-top: 15px;">
-    <a href="../compound/" style="color: #3182ce; font-weight: bold; text-decoration: none;">
-        📈 Want to see your bankroll growth over 30 days? Try our Simulator!
-    </a>
-</p>
-        <p style="text-align: center;">
-    <a href="../kelly/" style="color: #f59e0b; font-weight: bold; text-decoration: none;">
-        📏 Optimize your stakes with the Kelly Criterion Calculator
-    </a>
-</p>
-    </section>
-
-    <div class="ad-container">
-        <div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
-    </div>
-
-    <script>
-        // CONVERSION LOGIC
-        function convertOdds() {
-            const us = parseFloat(document.getElementById('us_input').value);
-            if (isNaN(us)) return;
-            let dec = 0;
-            if (us > 0) {
-                dec = (us / 100) + 1;
-            } else {
-                dec = (100 / Math.abs(us)) + 1;
-            }
-            document.getElementById('dec_output').innerText = "Result: " + dec.toFixed(2);
-        }
-
-        // ARBITRAGE LOGIC
-        function calculate() {
-            const o1 = parseFloat(document.getElementById('odd1').value);
-            const o2 = parseFloat(document.getElementById('odd2').value);
-            const invest = parseFloat(document.getElementById('invest').value);
-            
-            if (!o1 || !o2 || !invest) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            const arb = (1/o1) + (1/o2);
-            const resDiv = document.getElementById('result');
-            resDiv.style.display = 'block';
-
-            if (arb < 1) {
-                const s1 = (invest / (o1 * arb)).toFixed(2);
-                const s2 = (invest / (o2 * arb)).toFixed(2);
-                const profit = (invest / arb - invest).toFixed(2);
-                const roi = (((invest / arb - invest) / invest) * 100).toFixed(2);
-
-                document.getElementById('msg').innerText = "✅ Arbitrage Opportunity!";
-                document.getElementById('stake1').innerText = "Bet A: $ " + s1;
-                document.getElementById('stake2').innerText = "Bet B: $ " + s2;
-                document.getElementById('totalProfit').innerText = "Profit: $ " + profit + " (" + roi + "%)";
-            } else {
-                document.getElementById('msg').innerText = "❌ No Margin (Prob: " + (arb * 100).toFixed(2) + "%)";
-                document.getElementById('totalProfit').innerText = "";
-            }
-        }
-    </script>
 </body>
 </html>
