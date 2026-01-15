@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelly Criterion Calculator - Optimize Your Bet Sizing</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; display: flex; flex-direction: column; align-items: center; padding: 20px; line-height: 1.6; }
+        .card { background: #1e293b; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 500px; border: 1px solid #334155; }
+        h2 { color: #f59e0b; text-align: center; margin-bottom: 20px; }
+        label { font-size: 0.85rem; color: #94a3b8; display: block; margin-top: 10px; }
+        input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #334155; border-radius: 6px; background: #0f172a; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #f59e0b; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 20px; transition: 0.3s; }
+        button:hover { background: #d97706; }
+        .result { margin-top: 20px; padding: 15px; background: #451a03; border-radius: 6px; display: none; text-align: center; border-left: 4px solid #f59e0b; }
+        .info-section { max-width: 500px; margin-top: 30px; background: #1e293b; padding: 20px; border-radius: 12px; font-size: 0.9rem; border: 1px solid #334155; }
+        .info-section h3 { color: #f59e0b; margin-top: 0; }
+        .highlight { color: #f59e0b; font-weight: bold; }
+        .ad-space { margin-bottom: 20px; width: 100%; max-width: 500px; min-height: 100px; background: #1e293b; border-radius: 8px; display: flex; justify-content: center; align-items: center; border: 1px dashed #334155; }
+        .nav-link { margin-top: 20px; color: #94a3b8; text-decoration: none; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="ad-space">
+        <script async="async" data-cfasync="false" src="https://pl28479421.effectivegatecpm.com/262bcdccc001c928a9bcb4552e0018ea/invoke.js"></script>
+        <div id="container-262bcdccc001c928a9bcb4552e0018ea"></div>
+    </div>
+
+    <div class="card">
+        <h2>Kelly Criterion Calculator</h2>
+        
+        <label>Decimal Odds (e.g. 2.00)</label>
+        <input type="number" id="odds" step="0.01" placeholder="2.10">
+        
+        <label>Probability of Winning (%)</label>
+        <input type="number" id="prob" placeholder="50">
+        
+        <label>Total Bankroll ($)</label>
+        <input type="number" id="bankroll" placeholder="1000">
+
+        <button onclick="calculateKelly()">Calculate Optimal Bet</button>
+
+        <div id="result" class="result">
+            <p>Optimal Bet Percentage: <span class="highlight" id="kellyPercent"></span></p>
+            <p>Suggested Stake: <span class="highlight" id="kellyStake"></span></p>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3>What is the Kelly Criterion?</h3>
+        <p>The <span class="highlight">Kelly Criterion</span> is a mathematical formula used to determine the optimal size of a series of bets. In the world of sports betting and finance, it helps you maximize long-term wealth while minimizing the risk of ruin (going broke).</p>
+        
+        <h3>How to use this tool:</h3>
+        <ol>
+            <li><strong>Decimal Odds:</strong> Enter the odds offered by the bookmaker (e.g., 2.00 for even money).</li>
+            <li><strong>Probability:</strong> Enter your estimated chance of winning (from 0 to 100%). Tip: If you think it's a 50/50 coin toss, enter 50.</li>
+            <li><strong>Bankroll:</strong> Your total available funds for betting.</li>
+        </ol>
+
+        <h3>Why use it?</h3>
+        <p>If the result is <span style="color: #ef4444;">negative</span>, it means you don't have an "edge" and you should <strong>not</strong> bet. If it's positive, the formula tells you exactly how much of your bankroll to risk to grow it as fast as possible mathematically.</p>
+    </div>
+
+    <a href="../" class="nav-link">← Return to Main Tools</a>
+
+    <script>
+        function calculateKelly() {
+            let b = parseFloat(document.getElementById('odds').value) - 1; // Odds - 1
+            let p = parseFloat(document.getElementById('prob').value) / 100;
+            let q = 1 - p;
+            let bankroll = parseFloat(document.getElementById('bankroll').value);
+
+            if (isNaN(b) || isNaN(p) || isNaN(bankroll)) return;
+
+            // Formula: f* = (bp - q) / b
+            let fStar = ( (b * p) - q ) / b;
+            
+            let resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            if (fStar > 0) {
+                let percent = (fStar * 100).toFixed(2);
+                let stake = (fStar * bankroll).toFixed(2);
+                document.getElementById('kellyPercent').innerText = percent + "%";
+                document.getElementById('kellyStake').innerText = "$" + stake;
+                resultDiv.style.background = "#064e3b"; // Green for win
+                resultDiv.style.borderLeft = "4px solid #22c55e";
+            } else {
+                document.getElementById('kellyPercent').innerText = "0% (No Edge)";
+                document.getElementById('kellyStake').innerText = "$0.00";
+                resultDiv.style.background = "#451a03"; // Red/Brown for no bet
+                resultDiv.style.borderLeft = "4px solid #ef4444";
+            }
+        }
+    </script>
+</body>
+</html>
